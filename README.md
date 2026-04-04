@@ -265,6 +265,68 @@ All endpoints require ADMIN role.
 
 ---
 
+## Project Structure
+```
+src/
+├── audit/
+│   ├── audit.controller.ts
+│   ├── audit.module.ts
+│   └── audit.service.ts
+├── auth/
+│   ├── dto/
+│   │   ├── register.dto.ts
+│   │   └── login.dto.ts
+│   ├── strategies/
+│   │   └── jwt.strategy.ts
+│   ├── auth.controller.ts
+│   ├── auth.module.ts
+│   └── auth.service.ts
+├── common/
+│   ├── config/
+│   │   └── env.validation.ts
+│   ├── decorators/
+│   │   ├── current-user.decorator.ts
+│   │   └── roles.decorator.ts
+│   ├── filters/
+│   │   └── http-exception.filter.ts
+│   ├── guards/
+│   │   ├── jwt-auth.guard.ts
+│   │   └── roles.guard.ts
+│   ├── interceptors/
+│   │   └── response.interceptor.ts
+│   └── types.ts
+├── dashboard/
+│   ├── dashboard.controller.ts
+│   ├── dashboard.module.ts
+│   └── dashboard.service.ts
+├── prisma/
+│   ├── prisma.module.ts
+│   └── prisma.service.ts
+├── transactions/
+│   ├── dto/
+│   │   ├── create-transaction.dto.ts
+│   │   ├── filter-transaction.dto.ts
+│   │   └── update-transaction.dto.ts
+│   ├── transactions.controller.ts
+│   ├── transactions.module.ts
+│   └── transactions.service.ts
+├── users/
+│   ├── dto/
+│   │   ├── update-role.dto.ts
+│   │   └── update-status.dto.ts
+│   ├── users.controller.ts
+│   ├── users.module.ts
+│   └── users.service.ts
+├── app.module.ts
+└── main.ts
+prisma/
+├── migrations/
+├── schema.prisma
+└── seed.ts
+```
+
+---
+
 ## Assumptions
 
 - Every newly registered user gets the VIEWER role by default. An admin must manually upgrade roles via `PATCH /api/users/:id/role`
